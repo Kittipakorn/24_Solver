@@ -63,6 +63,3 @@ function solve(){
         document.getElementById("ans").style = "color : red;";
     }
 }
-
-// ( _ y) _ z === 24
-op(op(op(arr[0],arr[1],i),arr[2],j),arr[3].k)
