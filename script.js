@@ -36,6 +36,18 @@ function solve(){
                     }
                 }
             }
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    for (let k = 0; k < 4; k++) {
+                        if(op(op(op(arr[0],arr[1],i),arr[2],j),arr[3],k)===24) {
+                            document.getElementById("ans").innerText = "((" + a[0] + o[i] + a[1] + ")" + o[j] + arr[2]+")" + o[k] + arr[3] + " = 24";
+                            document.getElementById("ans").style = "color : #102C57;";
+                            bl = true;
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
         else {
             for (let i = idx; i < 4; i++) {
@@ -51,3 +63,6 @@ function solve(){
         document.getElementById("ans").style = "color : red;";
     }
 }
+
+// ( _ y) _ z === 24
+op(op(op(arr[0],arr[1],i),arr[2],j),arr[3].k)
