@@ -62,4 +62,4 @@ function solve(){
         document.getElementById("ans").innerText = "No Answer!";
         document.getElementById("ans").style = "color : red;";
     }
-}
+}//
