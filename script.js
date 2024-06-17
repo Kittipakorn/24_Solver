@@ -14,7 +14,7 @@ function solve(){
         return arr;
     }
 
-    function op(x,y,opt) {
+    function op(x,opt,y) {
         if(opt==0) return x+y;
         else if(opt==1) return x-y;
         else if(opt==2) return x*y;
@@ -27,20 +27,32 @@ function solve(){
             for (let i = 0; i < 4; i++) {
                 for (let j = 0; j < 4; j++) {
                     for (let k = 0; k < 4; k++) {
-                        if(op(op(arr[0],arr[1],i),op(arr[2],arr[3],j),k)===24) {
-                            document.getElementById("ans").innerText = "(" + a[0] + o[i] + a[1] + ")" + o[k] + "(" + a[2] + o[j] + a[3] + ") = 24";
+                        if(op(op(arr[0],i,arr[1]),k,op(arr[2],j,arr[3]))===24) {
+                            document.getElementById("ans").innerText = "(" + arr[0] + o[i] + arr[1] + ")" + o[k] + "(" + arr[2] + o[j] + arr[3] + ") = 24";
                             document.getElementById("ans").style = "color : #102C57;";
                             bl = true;
                             return 0;
                         }
-                    }
-                }
-            }
-            for (let i = 0; i < 4; i++) {
-                for (let j = 0; j < 4; j++) {
-                    for (let k = 0; k < 4; k++) {
-                        if(op(op(op(arr[0],arr[1],i),arr[2],j),arr[3],k)===24) {
-                            document.getElementById("ans").innerText = "((" + a[0] + o[i] + a[1] + ")" + o[j] + arr[2]+")" + o[k] + arr[3] + " = 24";
+                        else if(op(op(op(arr[0],i,arr[1]),j,arr[2]),k,arr[3])===24){
+                            document.getElementById("ans").innerText = "(" + arr[0] + o[i] + arr[1] + ")" + o[j] + arr[2] + ")" + o[k] + arr[3] + " = 24";
+                            document.getElementById("ans").style = "color : #102C57;";
+                            bl = true;
+                            return 0;
+                        }
+                        else if(op(op(arr[0],i,op(arr[1],j,arr[2])),k,arr[3])===24){
+                            document.getElementById("ans").innerText = "(" + arr[0] + o[i] +"("+ arr[1] + o[j] + arr[2] + "))" + o[k] + arr[3] + " = 24";
+                            document.getElementById("ans").style = "color : #102C57;";
+                            bl = true;
+                            return 0;
+                        }
+                        else if(op(arr[0],i,op(op(arr[1],j,arr[2]),k,arr[3]))===24){
+                            document.getElementById("ans").innerText = arr[0] + o[i] + "(("+ arr[1] + o[j] + arr[2] +")"+ o[k] + arr[3] + ") = 24";
+                            document.getElementById("ans").style = "color : #102C57;";
+                            bl = true;
+                            return 0;
+                        }
+                        else if(op(arr[0],i,op(arr[1],j,op(arr[2],k,arr[3])))===24){
+                            document.getElementById("ans").innerText = arr[0] + o[i] + "(" +arr[1] + o[j] + "(" + arr[2] + o[k] + arr[3] + ")) = 24";
                             document.getElementById("ans").style = "color : #102C57;";
                             bl = true;
                             return 0;
